@@ -4,11 +4,15 @@
 
 : 이 뷰 클래스는 총 4가지(Generic, ReadOnly, Model, ViewSet)가 있다.
 
+<br/>
+
 # 5. ViewSet
 
 ---
 
-> viewsets.py의 코드보기
+## 1) viewsets.py의 코드보기
+
+### (1) 소개
 
 : viewsets.py에 있는 클래스들은 인자를 묶어주는 역할을 수행한다.
 
@@ -24,10 +28,12 @@ class ViewSet(ViewSetMixin, Views.APIView):
 class GenericViewSet(ViewSetMixin, generics.GenericAPIView):
 ```
 
-- ReadOnlyModelViewSet
+<br/>
 
-: list(), retrieve()메소드를 묶어준다.
-: retrieve()은 특정 객체를 가져오며, list()는 객체 리스트를 가져와주는 역할을 한다.
+### (2) ReadOnlyModelViewSet
+
+: `list(), retrieve()`메소드를 묶어준다.
+: retrieve()은 특정 객체를 가져오며, `list()`는 객체 리스트를 가져와주는 역할을 한다.
 : 특정 레코드를 읽는 역할을 수행하는 클래스이다.
 
 ```python
@@ -38,13 +44,19 @@ class ReadOnlyModelViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin, Gen
 class ModelViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin)
 ```
 
-> viewset코드 작성하기
+<br/>
+
+## 2) viewset코드 작성하기
 
 : 우리는 이제까지 List, Detail을 각각의 클래스로 정의했다.
 
- 하지만 이제는 하나의 클래스(뷰셋)에서 이 2가지를 구현할 수 있다. 위에서 보이는 코드처럼 이번에는 List, detail을 인자로 상속받아 하나의 클래스에서 진행가능하다.
+: 하지만 이제는 하나의 클래스(뷰셋)에서 이 2가지를 구현할 수 있다. 
 
-- ReadOnlyModelViewset
+: 위에서 보이는 코드처럼 이번에는 List, detail을 인자로 상속받아 하나의 클래스에서 진행가능하다.
+
+<br/>
+
+### (1) ReadOnlyModelViewset
 
 : `ReadOnlyModelViewset`는 viewsets.py에 있는 클래스이다. 이 클래스를 상속받아, 쿼리셋과 직렬화클래스 변수를 재정의하는데, 이것이 가능한 이유가 `ReadOnlyModelViewSet`이 GenericViewSet을 상속받기 때문이다.
 
@@ -57,7 +69,9 @@ class UserViewSet(viewsets.ReadOnlyModelViewset):
 	serializer_class = UserSerializer
 ```
 
-- ModelViewSet
+<br/>
+
+### (2) ModelViewSet
 
 : queryset, serializer_vlass변수에 다룰 모델과 직렬화 객체를 설정해준다.
 
@@ -74,13 +88,19 @@ class UserViewSet(viewsets.ReadOnlyModelViewset):
 |#이 액션을 수행할 수 있는 권한 설정
 ```
 
-아니 뷰셋을 이용해서 코드길이가 반이 되는 건 알겠는데, 이 방법은 CRUD만 구현할 수 있나? 나만의 Custom API는 어떻게 만듬?
+<br /> <br />
 
-@ + 함수들 → 데코레이터, 장식자를 이용하자!
+*아니 뷰셋을 이용해서 코드길이가 반이 되는 건 알겠는데, 이 방법은 CRUD만 구현할 수 있나? 나만의 Custom API는 어떻게 만듬?*
+<br />
+### (3) 나만의 API
+
+`@ + 함수들 → 데코레이터, 장식자를 이용하자!`
 
 : 데코레이터를 써주고, 빨간 네모 안에 CRUD가 아닌, 내가 커스텀한 api를 코드를 써서 response가 가능하게 만든다.
 
-: renderer_classes은 response를 어떤 방식으로 랜더링 시킬 것인가를 정한다. 예를 들어renderer.JSONRenderer라고 하면 데이터를 json방식으로 보내겠다는 말이 된다.
+: renderer_classes은 response를 어떤 방식으로 랜더링 시킬 것인가를 정한다. 
+
+: 예를 들어renderer.JSONRenderer라고 하면 데이터를 json방식으로 보내겠다는 말이 된다.
 
 ![CLASSLION%20ViewSet%20af35b5ecbc044947a33594edc5d3a4b0/_2019-08-22__1.52.43.png](CLASSLION%20ViewSet%20af35b5ecbc044947a33594edc5d3a4b0/_2019-08-22__1.52.43.png)
 
@@ -96,15 +116,20 @@ class UserViewSet(viewsets.ReadOnlyModelViewset):
 |		serializer.save(owner=self.request.user)
 ```
 
-그래서 말한대로 customAPI를 만들었는데, 얘는 어떤 method로 호출해야 처리되는 거지? get으로 해야함? 아님 post로 해야함??;;
+<br />
+
+*그래서 말한대로 customAPI를 만들었는데, 얘는 어떤 method로 호출해야 처리되는 거지? get으로 해야함? 아님 post로 해야함??;;*
+
+<br />
 
 : Custom API의 default Method은 get방식이다.
 
  하지만 원한다면, action의 format인자로 다른 method지정이 가능하다.
 
-> viewset 코드 작성하기(views.py)
 
-- ReadOnlyViewSet방법으로 [views.py](http://views.py) 작성해보기
+<br/>
+
+### (4) ReadOnlyViewSet방법으로 [views.py] 작성해보기
 
 ```python
 |from post.models import Post
@@ -137,7 +162,9 @@ class UserViewSet(viewsets.ReadOnlyModelViewset):
 
 ![CLASSLION%20ViewSet%20af35b5ecbc044947a33594edc5d3a4b0/_2019-08-22__2.16.44.png](CLASSLION%20ViewSet%20af35b5ecbc044947a33594edc5d3a4b0/_2019-08-22__2.16.44.png)
 
-- ModelViewSet방법으로 [views.py](http://views.py) 작성해보기
+<br/>
+
+### (5) ModelViewSet방법으로 [views.py] 작성해보기
 
 ```python
 |from post.models import Post

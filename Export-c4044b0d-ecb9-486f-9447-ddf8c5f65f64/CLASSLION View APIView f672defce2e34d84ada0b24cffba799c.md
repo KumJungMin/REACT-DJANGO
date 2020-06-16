@@ -4,7 +4,9 @@
 
 ---
 
-이전 시간에 배운 Viewset는 view(CRUD)를 설계하는 쉽고 간단한 방법이다. 오늘은 바로 Viewset을 하는 게 아닌 APIView → Mixins → Generic CBV → ViewSet 순서로 진행해보자.
+이전 시간에 배운 Viewset는 view(CRUD)를 설계하는 쉽고 간단한 방법이다. 
+
+오늘은 바로 Viewset을 하는 게 아닌 APIView → Mixins → Generic CBV → ViewSet 순서로 진행해보자.
 
 아니 쉽고 간단한 ViewSet이 있는데 더 코드가 긴 다른 것들은 왜 배움?
 
@@ -15,38 +17,70 @@
 : APIView를 상속하여 → MIXins → MIXins을 상속하여 → Generic CBV → Generic CBV를 상속하여 → viewset이다. 
 
  그러니까 간단한 viewset 쓰고 싶어도 이전 단계 것들을 이해해야 가능.
+ 
+ <br/>
 
-그냥 이 viewset만 계속 쓰면 되지 않음?
+*그냥 이 viewset만 계속 쓰면 되지 않음?*
 
 : ㅇㅇ안됨. 나중에 커스터마이징을 해서 코드를 작성하거나 버그가 발생했을 때 구조를 이해 못하면 해결하는데 겁나 힘듬;
+
+<br/>
 
 # 2. APIView
 
 ---
 
-> 코드 분석
+## 1) 코드 분석
 
-리스트를 보여주는 SnippetList, 상세내용을 보여주는 SnippetDetail가 있다.
+: 리스트를 보여주는 SnippetList, 상세내용을 보여주는 SnippetDetail가 있다.
 
-이 클래스뷰들은 APIView를 상속하여 get, post 등등의 요청에 대해 데이터를 가공하여 처리한다.
+: 이 클래스뷰들은 APIView를 상속하여 get, post 등등의 요청에 대해 데이터를 가공하여 처리한다.
 
-이 클래스에서 메소드들을 정의할 때, 내가 쓰고자하는 Http이름으로 정의한다.
+: 이 클래스에서 메소드들을 정의할 때, 내가 쓰고자하는 Http이름으로 정의한다.
 
-SnippetDetail클래스는 APIView를 상속받아, 데이터에 대해 get, put, delete요청을 하고 싶으므로 이것들을 메소드로 정의하면 된다.
+: SnippetDetail클래스는 APIView를 상속받아, 데이터에 대해 get, put, delete요청을 하고 싶으므로 이것들을 메소드로 정의하면 된다.
 
 ![CLASSLION%20View%20APIView%20f672defce2e34d84ada0b24cffba799c/_2019-08-21__11.02.01.png](CLASSLION%20View%20APIView%20f672defce2e34d84ada0b24cffba799c/_2019-08-21__11.02.01.png)
 
-[import 부분](https://www.notion.so/e0ec4f55432e46a98abd7d557beb351b)
+<br/>
 
-[SnippetList](https://www.notion.so/f4b1ec9a7f6b4beda783ea7e1bb8bc83)
+### (1) import 부분
 
-[SnippetDetail](https://www.notion.so/5f5b580a1bf5458096fe4ad003bfb8fa)
+| APIView | 장고의 APIView를 상속받는 클래스를 사용하므로 import 한다. |
+|:--------:|:--------:|
+| Serializers | 직렬화파일에서 특정 직렬화클래스를 import한다. |
+| models | 모델파일에서 모델객체를 import한다. |
+| Http404 | 404에러를 띄우기 위해 Http404를 import한다. |
+| Status, Response | APIView를 상속하여 view를 설계할 때, status, response를 import해서, 직접 응답 과정을 만든다. <br /> (어떤 status인지에 따라 response를 함)  |
 
-> Views.py 코드 작성
+<br/>
 
-APIView형식으로 view클래스를 작성해보자!
+### (2) SnippetList
 
-- 데이터 처리 대상
+| 역할 | list 뷰를 당담한다. |
+|:--------:|:--------:|
+| 형태 | APIView를 상속한 클래스 형태이다. |
+| http 요청 | 리스트에서 필요한 요청은 get, post이다. |
+
+<br/>
+
+### (3) SnippetDetail
+
+| 역할 | 상세내용을 보여주는 역할을 담당한다. |
+|:--------:|:--------:|
+| 형태 | APIView를 상속한 클래스 형태이다. |
+| get_404 함수 | 404를 구현한 코드이다. |
+| http 요청 | get, put, delete이다. |
+
+<br/>
+
+## 2) Views.py 코드 작성
+
+: APIView형식으로 view클래스를 작성해보자!
+
+<br/>
+
+### (1) 데이터 처리 대상
 
 : PostDetail 클래스의 get_object 메소드 대신 아래 코드를 써도 된다.
 
@@ -62,8 +96,9 @@ APIView형식으로 view클래스를 작성해보자!
 |#APIView를 상속받은 CBV
 |from rest_framework.views import APIView
 ```
+<br/>
 
-- class 부분(1) - PostList
+### (2) class 부분 - PostList
 
 : 객체들의 리스트를 보여주거나 새 글 객체를 등록한다.
 
@@ -89,7 +124,9 @@ APIView형식으로 view클래스를 작성해보자!
 |
 ```
 
-- class 부분(2) - PostDetail
+<br/>
+
+### (3) class 부분 - PostDetail
 
 : 각각의 데이터 객체에 대해 보기, 수정, 삭제를 한다.
 
@@ -123,7 +160,9 @@ APIView형식으로 view클래스를 작성해보자!
 |    return Response(status=status.HTTP_204_NO_CONTECT)
 ```
 
-> Urls.py 코드 작성
+<br/>
+
+### (4) Urls.py 코드 작성
 
 :  url을 이용하여 특정주소를 요청하면 그에 해당하는 view클래스가 발동하여 데이터를 가져오게 한다.
 

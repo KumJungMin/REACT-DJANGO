@@ -6,6 +6,8 @@
 
 그렇다면 이러한 낭비는 어떻게 막을 수 있을까? 상속의 성질을 이용하면 된다.
 
+<br/>
+
 # 3. Mixins
 
 ---
@@ -16,14 +18,18 @@
 
 ![CLASSLION%20Mixins%20generic%20CBV%20f8b2f7c2548b4f1997b56f9829777e45/_2019-08-22__10.35.57.png](CLASSLION%20Mixins%20generic%20CBV%20f8b2f7c2548b4f1997b56f9829777e45/_2019-08-22__10.35.57.png)
 
-- SnippetList클래스
+<br/>
 
-> 역할
+## 1) SnippetList클래스
+
+### (1) 역할
 
 : 스니펫 목록의 리스트 목록을 보여준다.
 : mixins에서 ListModel, CreateModel을 가져와서 상속한다.
 
-> 코드 핵심
+<br/>
+
+### (2) 코드 핵심
 
 queryset = Snippet.objects.all()     
 serializer_class = SnippetSerializer 
@@ -40,7 +46,9 @@ def get(self, request, *args, **kwargs):
 
 : post메소드 리턴시 실행되는 create메소드는 mixins.CreateModelMixins에 내장되어 있다.
 
-> 전체 코드
+<br/>
+
+### (3) 전체 코드
 
 ```python
 from snippets.models import Snippet
@@ -66,14 +74,19 @@ class SnippetList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Gener
 
 ![CLASSLION%20Mixins%20generic%20CBV%20f8b2f7c2548b4f1997b56f9829777e45/_2019-08-22__10.47.56.png](CLASSLION%20Mixins%20generic%20CBV%20f8b2f7c2548b4f1997b56f9829777e45/_2019-08-22__10.47.56.png)
 
-- SnippetDetail클래스
+<br/>
+<br/>
 
-> 역할
+## 2) SnippetDetail클래스
+
+### (1) 역할
 
 : 스니펫에 있는 각각의 데이터를 다루는 용도로 이용된다. 
 : mixins에서 RetrieveModel, UpdateModel, DestoryModel을 가져와서 상속한다.
 
-> 전체 코드
+<br/>
+
+### (2) 전체 코드
 
 : SnippetDetail클래스는 get, put, delete메소드를 생성하여 이에 대한 리턴으로 mixins에 있는 메소드를 실행시킨다.
 
@@ -92,13 +105,15 @@ class SnippetDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.D
 		return self.destory(request, *args, **kwargs)
 ```
 
+<br/><br/>
+
 # 4. generic CBV
 
 ---
 
 : 우리는 앞서 APIVIew의 코드를 상속개념을 이용하여 mixins으로 줄였는데, 이번에는 믹스인 조차도 줄여보자!
 
-> 전체 코드
+## 1) 전체 코드
 
 : 이번에는 generics에 있던 ListCreateAPIVIew를 상속받아, 변수를 재정의한다.
 

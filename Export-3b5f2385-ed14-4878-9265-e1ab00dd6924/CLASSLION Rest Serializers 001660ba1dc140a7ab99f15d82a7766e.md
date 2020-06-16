@@ -12,6 +12,8 @@
 
 ex) get/1을 하면 1을 get해준다와 같음
 
+<br/>
+
 ## 2. rest는 왜 필요한가요?
 
 ---
@@ -19,6 +21,8 @@ ex) get/1을 하면 1을 get해준다와 같음
 : 하위 호환을 유지하면서 각기 네트워크가 발전되게 해준다.
 
 : 웹의 독립적인 진화에 도움이 됨
+
+<br/>
 
 ## 3. rest 설계 조건(rest가 되기 위한 필요충분조건)
 
@@ -30,6 +34,9 @@ ex) get/1을 하면 1을 get해준다와 같음
 
 : 다층 구조, 캐싱가능
 
+
+<br/>
+
 ## 4. api의 역할
 
 ---
@@ -39,6 +46,8 @@ ex) get/1을 하면 1을 get해준다와 같음
 : 서버와 클라이언트 사이의 메신저
 
 : 만든 api를 이런 식으로, 이런 형식을 지켜서 쓰세요! 와 같은 api문서들이 존재한다.
+
+<br/>
 
 ## 5. rest api
 
@@ -58,6 +67,8 @@ ex) get/1을 하면 1을 get해준다와 같음
 
 : is_valid()함수를 통해서 유효성 검사를 하고 데이터를 저장.
 
+<br/>
+
 ## 6. 직렬화
 
 ---
@@ -70,11 +81,15 @@ ex) get/1을 하면 1을 get해준다와 같음
 
 ![CLASSLION%20Rest%20Serializers%20001660ba1dc140a7ab99f15d82a7766e/_2019-08-09__1.23.02.png](CLASSLION%20Rest%20Serializers%20001660ba1dc140a7ab99f15d82a7766e/_2019-08-09__1.23.02.png)
 
+<br/>
+
 ### - ModelSerializer
 
 : 직렬화의 기능을 모델에 맞게 된 것이 ModelSerializer이다.
 
 : 쿼리셋이나 모델 직렬화를 알아서 해준다.
+
+<br/>
 
 ## 7. 실습
 
@@ -88,12 +103,16 @@ ex) get/1을 하면 1을 get해준다와 같음
 python3 -m venv myvenv
 ```
 
+<br/>
+
 -가상환경 키고 필요한 모듈 설치하기
 
 ```bash
 source myvenv/bin/activate
 pip install djangorestframework
 ```
+
+<br/>
 
 -프로젝트 파일과 앱 생성하기
 
@@ -103,9 +122,14 @@ cd firstrest
 python3 manage.py startapp post
 ```
 
+<br/>
+
 -firstrest/settings.py의 설치된 앱 목록에서, rest_framework, app 등록하기
 
 ![CLASSLION%20Rest%20Serializers%20001660ba1dc140a7ab99f15d82a7766e/_2019-08-14__10.21.20.png](CLASSLION%20Rest%20Serializers%20001660ba1dc140a7ab99f15d82a7766e/_2019-08-14__10.21.20.png)
+
+
+<br/>
 
 -앱폴더 안에 [urls.py](http://urls.py) 생성
 
@@ -125,6 +149,8 @@ urlpatterns = [
 ]
 ```
 
+<br/>
+
 -post/models.py에 가서 데이터를 정의한다.
 
 : 아래와 같이 코드를 정의한 후 2가지 명령어를 쉘에 입력해준다.
@@ -140,6 +166,8 @@ class Post(models.Model):
     title = models.CharField(max_length = 100)
     body = models.TextField()
 ```
+
+<br/>
 
 -post앱에 [serializers.py](http://serializers.py) 생성하기
 
@@ -157,6 +185,8 @@ class PostSerializer(serializers.ModelSerializer):
         #fields = ['title', 'body']
 ```
 
+<br/>
+
 -post/views.py에서 cbv형태로 뷰셋을 생성하기
 
 : 뷰셋에 대한 설명은 다음 강의에서 진행된다.
@@ -172,6 +202,8 @@ class PostViewset(viewsets.ModelViewSet):
     quertset = Post.objects.all() #모든 객체를 끌어다 오겠다.
     serializer_class = PostSerializer
 ```
+
+<br/>
 
 -post/urls.py에서 라우터를 등록하기
 
@@ -191,6 +223,8 @@ urlpatterns = [
     path('', include(router.urls)), #실제 url을 결정
 ]
 ```
+
+<br/>
 
 -서버 구동 시켜보기
 

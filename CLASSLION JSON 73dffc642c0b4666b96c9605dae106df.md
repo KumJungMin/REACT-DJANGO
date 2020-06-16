@@ -10,6 +10,8 @@
 
 : 예전에는 json대신에 xml을 쓰기도 했는데, xml은 다양한 데이터를 표현할 수 있지만 크기가 작아서 현재는 사용이 미비하다.
 
+<br/>
+
 ## 2) 어떻게 구성되어있는지
 
 - restful api server를 생성되어 있다.
@@ -22,6 +24,8 @@
 : 오른쪽 사진은 우리가 일반적으로 쓰던 장고의 딕셔너리 문법 형식이다.
 
 : 이러한 장고의 딕셔너리 문법을 json문법으로 변경하여 사용한다.
+
+<br/>
 
 ## 3) json의 문법형태
 
@@ -36,6 +40,8 @@
     이러한 직렬화 과정을 통해 서로 각기 다른 언어들을 모두가 알아 들을 수 있는 언어의 형태로 변환한다.
 
 ![CLASSLION%20JSON%2073dffc642c0b4666b96c9605dae106df/_2019-07-16__1.16.11.png](CLASSLION%20JSON%2073dffc642c0b4666b96c9605dae106df/_2019-07-16__1.16.11.png)
+
+<br/>
 
 ## 4) json을 왜 쓰는지
 
@@ -56,6 +62,8 @@
 사용자가 restful api 서버에 "객체→문자열"로 보내면
 
 사용자는  "문자열→객체"로 바꿔받는다.
+
+<br/>
 
 ## 5) 간단한 문법
 
@@ -85,8 +93,7 @@ diary_back = json.loads(diary_s)
 `json.loads()` json형식의 문자열을 장고의 자료형으로 변화해준다.
 
 ---
-
----
+<br/>
 
 # 2. http 프로토콜과 json
 
@@ -96,11 +103,16 @@ diary_back = json.loads(diary_s)
 
 : 웹상에서 통신을 수행할 수 있게 해주는 통신규약을 http라고 한다.
 
+<br/>
+
 ## 2) 프로토콜 종류
 
 : 장고에서 지원하는 프로토콜은 아래와 같다.
 
-[장고 프로토콜](https://www.notion.so/e5653072451542a2b24b4bfde64eb1a7)
+| get | post |
+|:--------:|:--------:|
+| 데이터를 가져다줘 | 데이터를 처리해줘 |
+| url에 입력한 데이터의 항목이 뜸 | url에 입력한 데이터의 항목이 안 뜸 |
 
 ---
 
@@ -108,13 +120,30 @@ diary_back = json.loads(diary_s)
 
 ![CLASSLION%20JSON%2073dffc642c0b4666b96c9605dae106df/_2019-07-16__1.38.13.png](CLASSLION%20JSON%2073dffc642c0b4666b96c9605dae106df/_2019-07-16__1.38.13.png)
 
-[restful 프로토콜](https://www.notion.so/79343b23b37447a89aa22ef8d945f640)
+| get | 요청받은 URL의 정보를 검색하여 응답해준다.(find) |
+|:--------:|:--------:|
+| post | 요청한 자원을 생성한다.(create) |
+| put | 요청된 자원을 수정한다.(update) |
+| delete | 요청된 자원을 삭제한다. |
+| patch | 요청한 자원의 일부를 수정 및 교체한다.(일부만!) |
+| option | 웹서버에서 지원되는 메소드의 종류를 확인할 수 있다. |
+
+
+
+
 
 ---
 
 : 사용자가 json문법 형식으로 보낸 데이터를 서버는 아래와 같은 응답으로 답한다.
 
-[http response](https://www.notion.so/70f0627d4ea7444a92e1b35785171e0c)
+| 1XX(정보) | 요청을 받았으며 프로세스를 계속한다. |
+|:--------:|:--------:|
+| 2XX(성공) | 요청을 성공적으로 받았으며 인식했고 수용하겠다. |
+| 3XX(리다이렉션) | 요청 완료를 위해 추가 작업 조치가 필요하다. |
+| 4XX(클라이언트 오류) | 요청의 문법이 잘못되었거나 요청을 처리할 수 없다. |
+| 5XX(서버 오류) | 서버가 명백히 유효한 요청에 대해 충족을 실패했다. |
+
+<br/>
 
 ## 3) httpie?
 
@@ -127,6 +156,8 @@ diary_back = json.loads(diary_s)
 - 설치법
 
     pip install —upgrade httpie
+
+<br/>
 
 ### (1). 명령어
 
@@ -147,6 +178,8 @@ http  [flags]  [method]  URL  [item[item]]
 → 처리 요청방식에 put, post이면 =으로 표현  ( x = a )
 
 → 처리 요청방식이 get         이면 ==으로 표현(x == a)
+
+
 
 - get 방식(데이터를 요청하겠다!)
 
@@ -176,7 +209,9 @@ http --form POST URL get인자==값 post인자=값
 
 post인자가 있으면 쓰고 안쓰며, post인지가 있으면 쓰고 없으면 안쓴다.
 
-(2). 실습
+<br/>
+
+### (2). 실습
 
 - 터미널에서 httpie를 설치한다.
 
@@ -229,19 +264,3 @@ post인자가 있으면 쓰고 안쓰며, post인지가 있으면 쓰고 없으�
 ---
 
 - json으로 post요청을 하면 요청한 내용에서 data에 문자열의 형태로 나타난다.
-
-![CLASSLION%20JSON%2073dffc642c0b4666b96c9605dae106df/_2019-07-16__2.15.07.png](CLASSLION%20JSON%2073dffc642c0b4666b96c9605dae106df/_2019-07-16__2.15.07.png)
-
-![CLASSLION%20JSON%2073dffc642c0b4666b96c9605dae106df/_2019-07-16__2.15.16.png](CLASSLION%20JSON%2073dffc642c0b4666b96c9605dae106df/_2019-07-16__2.15.16.png)
-
-[Copy of CLASSLION: cbv(1)](https://www.notion.so/Copy-of-CLASSLION-cbv-1-f3417a3bab21474fb33875b8f46c9a04)
-
-[Copy of CLASSLION: Rest, Serializers](https://www.notion.so/Copy-of-CLASSLION-Rest-Serializers-67195661885b4a1eb8d09af694a70d72)
-
-[Copy of CLASSLION:View & APIView](https://www.notion.so/Copy-of-CLASSLION-View-APIView-aedf4fcc23d14d7ab698d37d60c52e30)
-
-[Copy of CLASSLION:Mixins & generic CBV](https://www.notion.so/Copy-of-CLASSLION-Mixins-generic-CBV-daf1bf64c61845aa8e00b967dac2e566)
-
-[Copy of CLASSLION:ViewSet](https://www.notion.so/Copy-of-CLASSLION-ViewSet-202883770ae7457fb22b3a162688cc01)
-
-[Copy of CLASSLION:Router](https://www.notion.so/Copy-of-CLASSLION-Router-ad1be08fbf3c42c292fb1621a78652c6)

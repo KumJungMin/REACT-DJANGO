@@ -15,6 +15,8 @@ on + (Event)
 document.onClick =()=> console.log('document clicked');
 ```
 
+<br/><br/>
+
 ---
 
 # 2. event_handling
@@ -28,9 +30,11 @@ document.onClick =()=> console.log('document clicked');
 - handling함수를 만든다.
 - 이벤트가 발생하는 html 태그에서 onEvent명을 통해 handling함수를 부른다.
 
+<br/>
+
 ## A. 실습
 
-a) 어떤 버튼을 누르면 시간이 멈추게 해보자
+### a) 어떤 버튼을 누르면 시간이 멈추게 해보자
 
 > App.js
 
@@ -50,6 +54,8 @@ a) 어떤 버튼을 누르면 시간이 멈추게 해보자
 |	}	
 ```
 
+<br/>
+
 - WorldClock컴포넌트안에 arrow_function형태의 핸드링함수를 정의한다.
 
     : 왜 arrow function 형태로 작성하나요?(코드가 더 쉬움)
@@ -64,6 +70,8 @@ a) 어떤 버튼을 누르면 시간이 멈추게 해보자
 |   clearInterval(this.timer)  //시간을 멈추게 하는 과정2
 |	}
 ```
+
+<br/>
 
 - WorldClock컴포넌트의 return부분에 onclick 코드를 쓴다.
 
@@ -80,6 +88,9 @@ a) 어떤 버튼을 누르면 시간이 멈추게 해보자
 |}
 ```
 
+<br/>
+
+
 - WorldClock의 setInterval함수를 timer변수에 저장한다.
 
     저장한 timer를 이 컴포넌트 변수(this)단위에 두고, 이것을 clearInterval을 하면 이벤트에서 시간을 멈추게 만들어준다.
@@ -95,7 +106,9 @@ a) 어떤 버튼을 누르면 시간이 멈추게 해보자
 	}
 ```
 
-b) input이벤트를 만들어보자.
+<br/><br/>
+
+### b) input이벤트를 만들어보자.
 
 > App.js
 
@@ -138,5 +151,3 @@ class App extends React.Component{
  }
 }
 ```
-
-[CLASSLION/LifeCycle](https://www.notion.so/CLASSLION-LifeCycle-67b1e312fb9e48398557399419799642)

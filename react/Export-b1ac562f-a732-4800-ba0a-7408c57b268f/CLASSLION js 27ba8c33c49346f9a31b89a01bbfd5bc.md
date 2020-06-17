@@ -1,5 +1,3 @@
-# CLASSLION/js기초
-
 # 리액트를 배우기 전 자바스크립트 기초
 
 ## A. arrow function
@@ -43,6 +41,8 @@ colsole.log(plusTwo(10))   //12
 
 -파라미터가 한 개인 경우 괄호를 없애도 된다.
 
+<br/>
+
 ### b) 활용
 
 우리는 왜 arrow function을 쓰는 걸까?
@@ -71,6 +71,8 @@ filter함수는 어떤 조건에 만족하는 값을 뽑아낸다.
 arr_filter = arr.filter(v => v > 10) //10보다 큰 원소를 뽑도록 한다.
 ```
 
+<br/><br/>
+
 ---
 
 ## B. Class & Super
@@ -91,6 +93,8 @@ class Lion{
 mylion = new Lion("king")
 mylion.getName()              //my name is king
 ```
+
+<br/>
 
 ### b) 상속
 
@@ -129,6 +133,8 @@ mulion.printAnimal()
 
 -자식클래스에서 부모클래스를 상속하기 위해서 `super()`를 해줘야한다.
 
+<br/><br/>
+
 ---
 
 ## C. Asynchronous비동기, 동기
@@ -152,6 +158,8 @@ console.log("bye")
 
 대표적인 비동기로는 패이스북을 예로 들 수 있는데, 패이스북의 경우 사용자가 접속시 바로 화면이 안뜨면 불편해하므로 일단 배경을 띄우고, 그동안 글을 로딩하는 형태로 진행된다.
 
+<br/>
+
 ### b) callback
 
 이렇게 비동기적인 형태에서 하나의 문제가 발생할 수 있다. 현재 내가 로딩 중인 데이터를 꼭 필요로 한다면 상당히 답답할 것이다.
@@ -163,8 +171,8 @@ console.log("bye")
 ```jsx
 function sayHello(ByeCallback){
 	setTimeout( ()=>{
-    colsole.log("hi")
-		ByeCallback()
+        colsole.log("hi")
+        ByeCallback()
   }, 2000);
 }
 
@@ -178,6 +186,8 @@ sayHello(() => console.log("bye"))  //void형태의 함수
 -이 함수내부에 setTimeout()에 2초 후에 hi를 실행시키고, 그 다음에 인수로 받은 함수를 실행한다.
 
 -결과적으로 이 코드는 2초후에 hi를 출력하고 그다음에 bye를 콜백해줘! 하는 함수가 된다.
+
+<br/><br/>
 
 ---
 
@@ -194,9 +204,9 @@ promise란, 언젠가 해결할 것이란 약속이다. 이 약속이 해결되�
 ```jsx
 function sayHello(name, ByeCallback){
 	setTimeout( ()=>{
-    colsole.log(name+"hi")
-		ByeCallback()
-  }, 2000);
+          colsole.log(name+"hi")
+          ByeCallback()
+      }, 2000);
 }
 
 sayHello("mike", function(){
@@ -249,6 +259,9 @@ resolve()에 입력한 인수값이 then의 seoul이라는 매개변수에 전�
 그런데 then이 너무 직관적이지 않아! then을 더 직관적으로 쓰고 싶을 수도 있다.
 
 이 경우에는 Async Function을 이용하여 then을 더 직관적으로 사용할 수 있다.
+
+<br/>
+
 
 ### b) Async Function(then의 대체!)
 

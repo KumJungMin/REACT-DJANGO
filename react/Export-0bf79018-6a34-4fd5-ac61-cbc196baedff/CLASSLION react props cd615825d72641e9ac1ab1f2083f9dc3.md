@@ -1,12 +1,12 @@
-# CLASSLION/react & props
-
-# 2. React with django
+# react & props
 
 ## A. What is react (1)
 
 ### a) What is react?
 
 : 패이스북에서 만든 웹 라이브러리이다.
+
+<br/>
 
 ### b) What is DOM?
 
@@ -18,6 +18,8 @@
 
 : div라는 거대한 트리 구조가 있다.
 
+<br/>
+
 ### c) What is Component?
 
 ![CLASSLION%20react%20props%20cd615825d72641e9ac1ab1f2083f9dc3/_2019-08-19__1.45.29.png](CLASSLION%20react%20props%20cd615825d72641e9ac1ab1f2083f9dc3/_2019-08-19__1.45.29.png)
@@ -28,6 +30,9 @@
 
 : dom은 문서 구조 자체이며, 컴포넌트는 이 구조들을 내가 원하는 기능별로 묶었다고 볼 수 있다.
 
+
+<br/><br/>
+
 ---
 
 ## B. What is react (2)
@@ -35,6 +40,8 @@
 앞서 우리는 dom과 컴포넌트에 대해 알아보았다.
 
 이번에는 이러한 컴포넌트는 리액트에서 어떻게 쓰이며 어떠한 경우에 쓰면 좋은지 알아보자.
+
+<br/>
 
 ### a) example of react construction (1)
 
@@ -46,6 +53,8 @@
 
 : 각 역들은 일종의 컴포넌트라고 볼 수 있는데, 각 컴포넌트를 지날 때마다 데이터를 실거나 데이터를 내려준다.
 
+<br/>
+
 > 만약 어떤 컴포넌트에서 상태가 변경된다면?
 
 ![CLASSLION%20react%20props%20cd615825d72641e9ac1ab1f2083f9dc3/_2019-08-19__1.52.10.png](CLASSLION%20react%20props%20cd615825d72641e9ac1ab1f2083f9dc3/_2019-08-19__1.52.10.png)
@@ -54,17 +63,23 @@
 
 (새로고침되면서 하얀 페이지가 나오고 한참이 지나서야 내가 원하는 페이지가 나오는 경우)
 
+<br/>
+
 > : 만약 판교에서 데이터가 변경되었다면?
 
 ![CLASSLION%20react%20props%20cd615825d72641e9ac1ab1f2083f9dc3/_2019-08-19__2.04.47.png](CLASSLION%20react%20props%20cd615825d72641e9ac1ab1f2083f9dc3/_2019-08-19__2.04.47.png)
 
 : 이 경우에 리액트는 판교에서 데이터가 출발한다.
 
+<br/>
+
 > 만약 청계산에서 데이터가 변경되었다면?
 
 ![CLASSLION%20react%20props%20cd615825d72641e9ac1ab1f2083f9dc3/_2019-08-19__2.06.15.png](CLASSLION%20react%20props%20cd615825d72641e9ac1ab1f2083f9dc3/_2019-08-19__2.06.15.png)
 
 : 청계산에서 출발을 하는데 대신 판교를 들렀다가 클라이언트가 있는 정자에 도착하게 된다. 
+
+<br/><br/>
 
 ### b) example of react construction (2)
 
@@ -80,7 +95,10 @@
 
 : `VirtualDOM(3)`에서 변경한 사항을 `BrowerDOM(3)`에 실제로 Re_render해준다.
 
-: 예를 들면 페이스북에서 내가 댓글을 달았다면 → 댓글단 창의 데이터가 변경되고       → 변경된 댓글 결과창을 다시 보여주는 것과 같다. 나머지 수백 개의 글들은 변화될 필요가 없다. (이게 바로 리액트가 하는 일!)
+: 예를 들면 페이스북에서 내가 댓글을 달았다면 → 댓글단 창의 데이터가 변경되고       
+  → 변경된 댓글 결과창을 다시 보여주는 것과 같다. 나머지 수백 개의 글들은 변화될 필요가 없다. (이게 바로 리액트가 하는 일!)
+  
+  <br/>
 
 ### c)  Props와 컴포넌트의 state
 
@@ -88,9 +106,14 @@
 
 : 앞서 설명한 기차를 예로 들면 `Props`가 기차, 이 기차가 변경된 데이터(자식)들을 다른 컴포넌트(역)에 옮겨준다. 각각의 데이터들은 `state`에 저장이 되며 이들은 컴포넌트에 각각 존재한다.
 
+<br/>
+
 ![CLASSLION%20react%20props%20cd615825d72641e9ac1ab1f2083f9dc3/_2019-08-19__2.24.38.png](CLASSLION%20react%20props%20cd615825d72641e9ac1ab1f2083f9dc3/_2019-08-19__2.24.38.png)
 
 : 현재 이 구조를 보면 되게 쉬워보이지만 만약 수백개의 역과 호선들이 있다면 구현에 많은 어려움이 생길 것이다. 그래서 우리는 원활한 코드 구성을 위해 위 사진과 같은 절차를 거쳐야 한다.
+
+
+<br/><br/>
 
 ---
 
@@ -108,6 +131,8 @@
 
 : npx는 따로 모듈 설치없이 사용할 수 있도록 해주는 톨이다.
 
+<br/>
+
 ### b) starting with installed
 
 > 노드 js와 npm을 설치해준다.
@@ -120,6 +145,8 @@
 홈페이지에서 설치하거나 맥의 패키지 매니저로 node.js를 설치한다.
 ```
 
+<br/>
+
 > 빈 폴더를 생성해서, 이 폴더에 설치해보자.
 
 : npx를 통해 lion-app이라는 리액트 앱을 설치한다.
@@ -128,6 +155,8 @@
 npx create-react-app lion-app
 ```
 
+<br/>
+
 > lion-app을 실행시켜보자.
 
 ```bash
@@ -135,11 +164,15 @@ cd lion-app
 npm start
 ```
 
+<br/>
+
 > 코드에서 리액트 앱을 보자.
 
 ```bash
 code .
 ```
+
+<br/>
 
 ### C) rules of react files
 
@@ -174,6 +207,8 @@ code .
     : 만약 우리가 App(컴포넌트, 파일단위)이 아닌 h1태그를 이용하여 특정 내용을 적는다면, 아래와 같은 화면이 적용된다.
 
     ![CLASSLION%20react%20props%20cd615825d72641e9ac1ab1f2083f9dc3/_2019-08-19__2.51.08.png](CLASSLION%20react%20props%20cd615825d72641e9ac1ab1f2083f9dc3/_2019-08-19__2.51.08.png)
+
+<br/>
 
 - index.html
 - App.js
@@ -238,6 +273,8 @@ code .
     export default App2;   
     ```
 
+<br/><br/>
+
 ---
 
 ## D. JSX
@@ -247,6 +284,8 @@ code .
 그리고 이 컴포넌트들은 어떻게 꾸미는지도 알아보자.
 
 jsx를 어떻게 리액트에 적용할 수 있을까?
+
+<br/>
 
 ### a) What is JSX?
 
@@ -259,6 +298,8 @@ jsx를 어떻게 리액트에 적용할 수 있을까?
 : Attributes나 css는 낙타방식이다.(ex. className, textAlign)
 
 : js코드를 활용하고 싶다면 `{ }`를 이용한다.
+
+<br/>
 
 ### b) start
 
@@ -318,6 +359,8 @@ export default App;
 이 경우는 JSX의 문법 중 하나인 낙타형식을 적용하지 않아서이다. JSX문법에서는 하이폰(-)을 허락하지 않기 때문에 `font-weight`는 낙타형식인 `fontWeight`라고 해야한다.
 
 (이때 10px이라고 적으면 적용이 안되므로 그냥 숫자만 적을 것!)
+
+<br/>
 
 > App.css
 

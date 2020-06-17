@@ -9,13 +9,15 @@
 - 그러므로 우리는 컴포넌트를 잘 기획하고 나누어 작성해야한다.
 - create-react-app을 이용해 프로젝트를 생성한다.
 
+<br/>
+
 ## A. Props
 
 ### a) What is Props?
 
 ![CLASSLION%20props%20state%2068274188445246b08a4b570fe17e4a38/_2019-08-19__3.58.33.png](CLASSLION%20props%20state%2068274188445246b08a4b570fe17e4a38/_2019-08-19__3.58.33.png)
 
-: 각 역들간의 이동에 있어, 역과 역 사이의 데이터 이동수단이다.(데이터를 싣고 다니는 기차!)
+: props는 각 역들간의 이동에 있어 역과 역 사이의 데이터 이동수단이다.(데이터를 싣고 다니는 기차!)
 
 : 이러한 Props의 가장 큰 특징은 "Read Only"이다.
 
@@ -24,6 +26,8 @@
  이것 때문에 state, props를 따로 저장하게 된다.(뒤에 예시보면 알게 됨 :>)
 
 : props의 예로, 시간을 나라별로 보여주는 경우를 생각해보자
+
+<br/>
 
 > App.js
 
@@ -69,6 +73,8 @@ function App(){
 
 ![CLASSLION%20props%20state%2068274188445246b08a4b570fe17e4a38/_2019-08-19__4.13.40.png](CLASSLION%20props%20state%2068274188445246b08a4b570fe17e4a38/_2019-08-19__4.13.40.png)
 
+<br/><br/>
+
 ---
 
 ## B. List & Key
@@ -76,6 +82,8 @@ function App(){
 우리는 위에서 하나의 컴포넌트를 여러 번 사용했다.
 
 이제 이 컴포넌트에서 나타나는 중요 개념과 여러 번 작성하지 않는 편한 방법을 알아보자!
+
+<br/>
 
 ### a) 반복적으로 적었던 태그의 속성값들을 변경해보자.
 
@@ -123,7 +131,11 @@ export default App;
 
 : 이렇게 여러개의 child컴포넌트들을 만드는데 중요한 점이 하나 있다. 
 
-이때 각 컴포넌트들을 식별할 수 있는 key값도 지정해줘야한다는 점! 다행스럽게도 우리는 `index`라는 매개변수를 통해 해당 데이터에 대한 인덱스 번호를 가져올 수 있다! `key={index}`를 통해 각 child컴포넌트간에 식별가능한 성질을 부여한다.
+: 이때 각 컴포넌트들을 식별할 수 있는 key값도 지정해줘야한다는 점! 
+
+: 다행스럽게도 우리는 `index`라는 매개변수를 통해 해당 데이터에 대한 인덱스 번호를 가져올 수 있다! 
+
+  `key={index}`를 통해 각 child컴포넌트간에 식별가능한 성질을 부여한다.
 
 : 이것은 map함수의 매개변수 특징때문에 가능하다. map함수는 첫번째 인자로 무조건 함수를 받지만, 그 다음 부터 두번째 인자로는 무조건!! 인덱스를 받게 된다.
 
@@ -132,6 +144,8 @@ export default App;
 : 공식문서에 보면 key에 대해서 이렇게 설명한다.
 
 우리는 키를 통해 이 컴포넌트의 값이 삭제, 변경사항을 식별하고 인지할 수 있게 해준다
+
+<br/><br/>
 
 ---
 
@@ -149,6 +163,8 @@ state는 각 역(component)들이 가지고 있는 데이터의 집합이다.
 
 이 state는 비용이 드는 작업이므로, 정말 필요한 곳에만 state를 넣어야 한다.
 
+<br/>
+
 ### a) When we use state?
 
 : state를 써야 하는 경우는 아래와 같다.
@@ -161,16 +177,22 @@ state는 각 역(component)들이 가지고 있는 데이터의 집합이다.
 : 여기 state와 stateless(state를 쓰지 않는)컴포넌트가 있다.
 
  좌측에는 function, class 형태로 컴포넌트를 선언하냐에 대해 말하고 있다.
+ 
+ <br/>
 
 > 과거
 
 function은 state를 가질 수 없었음 → 이 말은 state를 써야 하는 경우에는 function 컴포넌트를 사용할 수 없었다는 말
 
-아니 그러면 걍 class로 다 만들면 안됨?
+*아니 그러면 걍 class로 다 만들면 안됨?*
 
-: ㅇㅇ 안됨!! class로 다 만들어버리면 function으로 만들었을 때보다 더 시간이 걸리고 코드가 더 무거워진다. 그러므로 때에 따라 class로 선언해야한다.
+: ㅇㅇ 안됨!! class로 다 만들어버리면 function으로 만들었을 때보다 더 시간이 걸리고 코드가 더 무거워진다. 
+
+  그러므로 때에 따라 class로 선언해야한다.
 
 ![CLASSLION%20props%20state%2068274188445246b08a4b570fe17e4a38/_2019-08-19__4.52.58.png](CLASSLION%20props%20state%2068274188445246b08a4b570fe17e4a38/_2019-08-19__4.52.58.png)
+
+<br/>
 
 > 현재
 
@@ -181,6 +203,8 @@ function은 state를 가질 수 없었음 → 이 말은 state를 써야 하는 
 ![CLASSLION%20props%20state%2068274188445246b08a4b570fe17e4a38/_2019-08-19__4.52.11.png](CLASSLION%20props%20state%2068274188445246b08a4b570fe17e4a38/_2019-08-19__4.52.11.png)
 
 하지만 아직도 class component에서 state를 쓴 경우가 있다. 그래서 오늘은 class component에서 state를 쓰는 방법을 먼저 알아보고나서 hook을 배워보자!
+
+<br/>
 
 ### b) Class Component에서 state쓰기
 
@@ -268,5 +292,3 @@ class WorldClock extends React.Component {
   하지만 우리는 라이프사이클을 학습하지 않았으므로 동적으로 값이 변화하는 걸 표현할 수 없다. 
 
   현재로서는 `setInterval()`이라는 모듈을 이용한다. 
-
-[CLASSLION/event_handling](https://www.notion.so/CLASSLION-event_handling-973b2d75e6f945c8997163128c6418d2)

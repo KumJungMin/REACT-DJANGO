@@ -1,4 +1,4 @@
-# REACT-DJANGO
+# REACT-DJANGO *2020.07.01 ~ 2020.08.03 Update*
 react, django을 이용한 웹앱을 만들어보자.
 
 <br/>

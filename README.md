@@ -16,3 +16,9 @@ react, django을 이용한 웹앱을 만들어보자.
 [5] <a href="https://github.com/KumJungMin/REACT-DJANGO/blob/master/Export-ac5377dc-bf69-4da5-b2b0-5d187fc32697/CLASSLION%20ViewSet%20af35b5ecbc044947a33594edc5d3a4b0.md">ViewSet</a>
 
 [6] <a href="https://github.com/KumJungMin/REACT-DJANGO/blob/master/Export-af386b95-5b40-4ba6-ab11-37653db27114/CLASSLION%20Router%20f7f68d9d466948d498872fca76ebc1da.md">Router</a>
+
+<br/><br/>
+
+## 2. react 기초
+
+[1] <a href="https://github.com/KumJungMin/MOVIE_APP_2020">react로 api 가져오기 </a>

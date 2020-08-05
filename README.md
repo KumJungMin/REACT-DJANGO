@@ -22,3 +22,5 @@ react, django을 이용한 웹앱을 만들어보자.
 ## 2. react 기초
 
 [1] <a href="https://github.com/KumJungMin/MOVIE_APP_2020">react로 api 가져오기 </a>
+
+[2] <a href="https://github.com/KumJungMin/vaniila-redux">바닐라 redux와 react redux</a>

@@ -1,4 +1,5 @@
-# REACT-DJANGO *2020.07.01 ~ 2020.08.03 Update*
+# REACT-DJANGO 
+*2020.07.01 ~ 2020.08.03 Update*
 react, django을 이용한 웹앱을 만들어보자.
 
 <br/>
@@ -30,7 +31,8 @@ react, django을 이용한 웹앱을 만들어보자.
 ## 3. 장고에 대한 기초가 궁금하다면?
 
 *본인의 네이버 블로그 게시물로 이동합니다*
-*아래 게시물들은 2019년 초 게시물로, 일부 내용이 누락될 수 있음을 알려드립니다. *
+
+*아래 게시물들은 2019년 초 게시물로, 일부 내용이 누락될 수 있음을 알려드립니다.*
 
 [1] <a href="https://blog.naver.com/PostView.nhn?blogId=rmawjdals&logNo=221444317567&categoryNo=28&parentCategoryNo=0&viewDate=&currentPage=3&postListTopCurrentPage=&from=postList">장고 환경설정하기</a>  
 

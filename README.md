@@ -26,7 +26,7 @@ react, django을 이용한 웹앱을 만들어보자.
 
 [2] <a href="https://github.com/KumJungMin/vaniila-redux">바닐라 redux와 react redux</a>
 
-<br/>
+<br/><br/>
 
 ## 3. 장고에 대한 기초가 궁금하다면?
 
